@@ -1,0 +1,13 @@
+<h1>New Game</h1>
+<ul class="d-flex justify-content-center list-unstyled">
+  <% @letters.each do |letter| %>
+    <li class="mx-3"><div style="height: 75px; width: 75px; color: white;" class="rounded d-flex bg-primary justify-content-center fs-1 fw-bolder"><%= letter %></div></li>
+  <% end %>
+</ul>
+
+<form action="/score" method="post" class="form-control" data-turbo="false">
+  <input type="text" name="answer">
+  <input type="submit" value="submit">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :grid, @letters %>
+</form>
